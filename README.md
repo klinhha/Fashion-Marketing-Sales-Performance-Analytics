@@ -1,6 +1,6 @@
 # [POWER BI] Fashion Marketing Sales Performance Analytics
 ## I. Introduction
-This Power BI dashboard provides an overview of fashion business performance by integrating sales, product, and digital marketing campaign data. It enables users to monitor revenue, profitability, advertising efficiency, and product performance to support data-driven business decisions.
+This **Power BI dashboard** provides an overview of **fashion business performance** by integrating _sales, product, and digital marketing campaign data_. It enables users to **monitor** revenue, profitability, advertising efficiency, and product performance to **support data-driven business decisions**.
 ## II. Objectives
 - **Evaluate business performance**: Monitor revenue, profit, profit margin, orders, and average order value.
 - **Analyze marketing effectiveness**: Assess campaign performance using ROAS, CPC, CPM, CTR, and advertising revenue.
