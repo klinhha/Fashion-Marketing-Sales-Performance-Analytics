@@ -20,6 +20,143 @@ This **Power BI dashboard** provides an overview of **fashion business performan
 - **mkt_camp_cost** - Contains marketing campaign expenditure, budget, and advertising delivery metrics.
 - **danh_muc_san_pham** - Contains product master data used to analyze sales and marketing performance by product and category.
 
+## Dataset Structure
+
+The dataset consists of four main tables covering marketing campaign performance, product-level advertising costs, customer orders, and product information.
+
+| Table | Records | Columns | Description |
+|---|---:|---:|---|
+| `mkt_camp_by_sku_cost` | 3,874 | 37 | Campaign performance and cost allocation by product/SKU |
+| `mkt_camp_cost` | 854 | 10 | Daily marketing campaign costs and performance |
+| `order` | 3,451 | 22 | Customer order and transaction details |
+| `danh sach san pham` | 2,250 | 16 | Product details, pricing, and attributes |
+
+### Data Dictionary
+
+<details>
+<summary><strong>Table 1: mkt_camp_by_sku_cost</strong> (3,874 records)</summary>
+
+Contains marketing campaign performance data allocated across individual products/SKUs, including advertising costs, engagement, customer messages, and sales-related metrics.
+
+| Column Name | Data Type | Description |
+|---|---|---|
+| `Tên chiến dịch` | VARCHAR | Name of the marketing campaign. |
+| `Ngày` | DATE | Date of the campaign performance record. |
+| `Đơn vị tiền tệ` | VARCHAR | Currency used for campaign spending. |
+| `Số tiền đã chi tiêu (VND)` | DECIMAL | Total advertising spend in VND. |
+| `Phân phối chiến dịch` | VARCHAR | Campaign delivery status. |
+| `Ngân sách chiến dịch` | DECIMAL | Campaign budget. |
+| `Loại ngân sách chiến dịch` | VARCHAR | Campaign budget type, such as Daily. |
+| `Lần bắt đầu cuộc trò chuyện qua tin nhắn` | INT | Number of messaging conversations initiated. |
+| `Bình luận về bài viết` | INT | Number of comments on campaign posts. |
+| `CPM` | DECIMAL | Cost per 1,000 impressions. |
+| `CPC` | DECIMAL | Cost per click. |
+| `CTR` | DECIMAL | Click-through rate. |
+| `Tin nhắn mới` | INT | Number of new customer messages. |
+| `Lượt hiển thị` | INT | Number of ad impressions. |
+| `Mã Sản phẩm` | VARCHAR | Product identifier. |
+| `Tên Sản Phẩm` | VARCHAR | Product name. |
+| `Giá bán` | DECIMAL | Selling price of the product. |
+| `Tên Bài Chạy` | VARCHAR | Name of the advertising post or ad. |
+| `Bài chạy theo ngày` | VARCHAR | Ad name combined with its campaign date identifier. |
+| `Tiền đã chạy Theo Sản phẩm` | DECIMAL | Advertising spend allocated to each product. |
+| `Ngân sách Theo sản phẩm` | DECIMAL | Campaign budget allocated to each product. |
+| `Inbox Theo AM` | DECIMAL | Number of inbox conversations allocated per product. |
+| `Comments Theo AM` | DECIMAL | Number of comments allocated per product. |
+| `Inbox + Comments Theo AM` | DECIMAL | Combined inbox and comment volume allocated per product. |
+| `CP/KQ Theo AM` | DECIMAL | Cost per result allocated per product. |
+| `CPM Theo AM` | DECIMAL | CPM allocated per product. |
+| `CPC Theo AM` | DECIMAL | CPC allocated per product. |
+| `CTR Theo AM` | DECIMAL | CTR allocated per product. |
+| `Khách mới Theo AM` | DECIMAL | New customers/messages allocated per product. |
+| `Khách cũ Theo AM` | DECIMAL | Existing customers/messages allocated per product. |
+| `Lượt hiển thị Theo AM` | DECIMAL | Impressions allocated per product. |
+| `SL bán tổng` | INT | Total quantity sold for the product on the recorded date. |
+| `Tổng CMT trên SP` | DECIMAL | Total comments allocated per product. |
+| `SL bán được phân bổ theo tỉ lệ` | DECIMAL | Product sales quantity allocated based on a ratio. |
+| `SL tồn` | INT | Remaining product inventory. |
+| `Tổng SL bán theo Campaign` | DECIMAL | Total sales quantity associated with the campaign. |
+
+</details>
+
+<details>
+<summary><strong>Table 2: mkt_camp_cost</strong> (854 records)</summary>
+
+Contains daily marketing campaign spending and advertising performance metrics.
+
+| Column Name | Data Type | Description |
+|---|---|---|
+| `Tên chiến dịch` | VARCHAR | Name of the marketing campaign. |
+| `Ngày` | DATE | Date of the campaign performance record. |
+| `Số tiền đã chi tiêu` | DECIMAL | Total advertising spend. |
+| `Phân phối chiến dịch` | VARCHAR | Campaign delivery status. |
+| `Ngân sách chiến dịch` | DECIMAL | Campaign budget. |
+| `Loại ngân sách chiến dịch` | VARCHAR | Campaign budget type, such as Daily. |
+| `CPM (Chi phí trên mỗi 1.000 lần hiển thị)` | DECIMAL | Cost per 1,000 ad impressions. |
+| `CPC (Chi phí trên mỗi lượt click vào liên kết)` | DECIMAL | Cost per link click. |
+| `Lượt hiển thị` | INT | Number of ad impressions. |
+| `Click` | INT | Number of ad clicks. |
+
+</details>
+
+<details>
+<summary><strong>Table 3: order</strong> (3,451 records)</summary>
+
+Contains customer order information, product details, transaction values, and order statuses.
+
+| Column Name | Data Type | Description |
+|---|---|---|
+| `ID` | INT | Order identifier. |
+| `Thời gian` | DATETIME | Date and time when the order was recorded. |
+| `Nguồn` | VARCHAR | Source or channel through which the order was created. |
+| `Tên khách hàng` | VARCHAR | Customer name. |
+| `Mã khách hàng` | VARCHAR | Customer identifier. |
+| `Cấp độ khách hàng` | VARCHAR | Customer membership or loyalty level. |
+| `Sinh nhật` | DATE / VARCHAR | Customer date of birth. |
+| `Thành phố` | VARCHAR | Customer's city. |
+| `Quận huyện` | VARCHAR | Customer's district. |
+| `Phường xã` | VARCHAR | Customer's ward or commune. |
+| `Sản phẩm` | VARCHAR | Ordered product, including its variant where applicable. |
+| `Mã sản phẩm cha` | VARCHAR | Parent product identifier. |
+| `Tên sản phẩm cha` | VARCHAR | Parent product name. |
+| `Mã sản phẩm` | VARCHAR | Product/SKU identifier. |
+| `Mã vạch` | VARCHAR | Product barcode. |
+| `Danh mục sản phẩm` | VARCHAR | Product category. |
+| `Chiết khấu` | DECIMAL | Discount applied to the order item. |
+| `Giá` | DECIMAL | Selling price recorded for the order item. |
+| `Số lượng` | INT | Quantity ordered. |
+| `Giá vốn` | DECIMAL | Product cost recorded for the order item. |
+| `Trạng thái` | VARCHAR | Current order status. |
+| `Lý do hủy` | VARCHAR | Reason for order cancellation. |
+
+</details>
+
+<details>
+<summary><strong>Table 4: danh sach san pham</strong> (2,250 records)</summary>
+
+Contains product master data, including product identifiers, pricing, categories, brands, and product attributes.
+
+| Column Name | Data Type | Description |
+|---|---|---|
+| `ID` | INT | Product record identifier. |
+| `Mã vạch` | VARCHAR | Product barcode. |
+| `Loại sản phẩm` | VARCHAR | Product type. |
+| `Mã sản phẩm` | VARCHAR | Product/SKU identifier. |
+| `Tên sản phẩm` | VARCHAR | Product name. |
+| `Giá nhập` | DECIMAL | Purchase price of the product. |
+| `Giá bán` | DECIMAL | Selling price of the product. |
+| `Giá bán + VAT` | DECIMAL | Selling price including VAT. |
+| `Giá vốn` | DECIMAL | Product cost. |
+| `Trạng thái` | VARCHAR | Product status. |
+| `Mã danh mục` | VARCHAR | Product category identifier. |
+| `Danh mục` | VARCHAR | Product category name. |
+| `Mã danh mục nội bộ` | VARCHAR | Internal product category identifier. |
+| `Thương hiệu` | VARCHAR | Product brand. |
+| `Màu sắc` | VARCHAR | Product color. |
+| `Chất liệu` | VARCHAR | Product material. |
+
+</details>
+
 ### 2. Data Relationships
 <img width="400" height="356" alt="Screenshot 2026-10-14 221702" src="https://github.com/user-attachments/assets/bc80e5ac-7ac2-441d-8d27-a539bddb5b8c" />
 
